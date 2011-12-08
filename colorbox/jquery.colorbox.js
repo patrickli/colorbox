@@ -44,6 +44,7 @@
         onOpen: false,
         onLoad: false,
         onComplete: false,
+        onBeforeClose: false,
         onCleanup: false,
         onClosed: false,
         overlayClose: true,		
@@ -823,7 +824,11 @@
 
 	// Note: to use this within an iframe use the following format: parent.$.fn.colorbox.close();
 	publicMethod.close = function () {
-		if (open && !closing) {
+		var doClose = true;
+		if ($.isFunction(settings.onBeforeClose)) {
+			doClose = settings.onBeforeClose.call(element);
+		}
+		if (doClose && open && !closing) {
 			
 			closing = true;
 			
