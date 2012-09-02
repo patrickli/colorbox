@@ -297,7 +297,7 @@
 				}
 				
 				// +settings.opacity avoids a problem in IE when using non-zero-prefixed-string-values, like '.5'
-				$overlay.css({"opacity": +settings.opacity, "cursor": settings.overlayClose ? "pointer" : "auto"}).show();
+				$overlay.css({"opacity": 0, "cursor": settings.overlayClose ? "pointer" : "auto"}).fadeTo(settings.speed, +settings.opacity);
 				
 				// Opens inital empty ColorBox prior to content being loaded.
 				settings.w = setSize(settings.initialWidth, 'x');
